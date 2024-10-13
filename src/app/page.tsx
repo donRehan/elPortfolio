@@ -27,7 +27,7 @@ function WarningModal({ isOpen, onClose }) {
           <X size={24} />
         </button>
         <h2 className="text-2xl font-bold text-black mb-4">WARNING</h2>
-        <p className="text-black mb-6">This website is under construction. Some features may not be fully functional.</p>
+        <p className="text-black mb-6">This website is in preview stage. Some features may not be fully functional.</p>
         <button
           onClick={onClose}
           className="bg-black text-white px-4 py-2 font-bold hover:bg-gray-800 transition-colors"
