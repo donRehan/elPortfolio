@@ -1,12 +1,104 @@
-import { Github, Linkedin, Code, Zap, Minimize, ArrowRight, FileDown} from "lucide-react";
+"use client";
+
+import { Github, Linkedin, Code, Zap, Minimize, ArrowRight, FileDown, X} from "lucide-react";
 import Link from "next/link";
 import Button from "./ui/Button/Button";
 import { ibm } from "./ui/fonts"
 import Image from 'next/image';
+import { useEffect, useState } from "react";
+
+interface ListItem {
+  title: string
+  description: string
+  slug: string
+}
+
+function WarningModal({ isOpen, onClose }) {
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+      <div className="bg-yellow-400 border-4 border-black p-8 max-w-md w-full relative">
+        <button
+          onClick={onClose}
+          className="absolute top-2 right-2 text-black hover:text-gray-700"
+          aria-label="Close"
+        >
+          <X size={24} />
+        </button>
+        <h2 className="text-2xl font-bold text-black mb-4">WARNING</h2>
+        <p className="text-black mb-6">This website is under construction. Some features may not be fully functional.</p>
+        <button
+          onClick={onClose}
+          className="bg-black text-white px-4 py-2 font-bold hover:bg-gray-800 transition-colors"
+        >
+          Understood
+        </button>
+      </div>
+    </div>
+  );
+}
+
+const sampleItems: ListItem[] = [
+  {
+    title: "Example Product",
+    description: `Example description to be fetched from the backend.`,
+    slug: "brutalist-chair",
+  },
+  {
+    title: "Example Product",
+    description: `Example description to be fetched from the backend.`,
+    slug: "concrete-coffee-table",
+  },
+  {
+    title: "Example Product",
+    description: `Example description to be fetched from the backend.`,
+    slug: "minimalist-lamp",
+  },
+  {
+    title: "Example Product",
+    description: `Example description to be fetched from the backend.`,
+    slug: "raw-steel-bookshelf",
+  },
+  {
+    title: "Example Product",
+    description: `Example description to be fetched from the backend.`,
+    slug: "exposed-brick-wallpaper",
+  },
+]
+
+function ListComponent() {
+  return (
+    <div className={`${ibm.className} container mx-auto px-4 py-8 bg-gray-100 min-h-screen`}>
+      <ul className="space-y-8">
+        {sampleItems.map((item, index) => (
+          <div className="group">
+          <li key={index} className="border-b border-black pb-4 group-hover:border-b-4">
+            <Link href={`/product/${item.slug}`} className="block pb-2  border-black transition-all">
+                <h2 className="text-2xl font-bold mb-2">{item.title}</h2>
+                <p className="text-sm mb-4 text-wrap">{item.description}</p>
+                <span className="text-sm underline md:text-right group-hover:font-bold transition-all">
+                  View Product
+                </span>
+            </Link>
+          </li>
+          </div>
+        ))}
+      </ul>
+    </div>
+  )
+}
 
 export default function Component() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    setIsModalOpen(true);
+  }, []);
+
   return (
     <div className={`${ibm.className} antialiased min-h-screen bg-[#f5f5f5] text-black font-mono`}>
+      <WarningModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
 
       <div className="bg-[#f5f5f5] mx-auto max-w-5xl">
         {/* Header Section */}
@@ -18,7 +110,7 @@ export default function Component() {
         {/* Hero Section */}
         <section className="container mx-auto px-4 py-20 border-b-4 border-black">
           <div className="flex flex-col items-center text-center">
-            <h2 className="text-6xl font-bold mb-6">CRAFTING DIGITAL EXPERIENCES</h2>
+            <h2 className="text-[3rem] font-bold mb-6 break-words sm:text-6xl">CRAFTING DIGITAL EXPERIENCES</h2>
             <p className="text-2xl mb-8">I build responsive, user-friendly websites that make an impact.</p>
             <Link
               href="#contact"
@@ -55,66 +147,11 @@ export default function Component() {
 
         {/* Projects Section */}
         <section className="container mx-auto px-4 py-20 border-b-4 border-black">
-          <h2 className="text-4xl font-bold mb-8 text-center">RECENT PROJECTS</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            
-              <div className="border-2 border-black p-6">
-                <div className="h-48 bg-gray-200 flex items-center justify-center mb-4">
-                Image
-                </div>
-                <h3 className="text-2xl font-bold mb-2 text-center break-words">NeosolarizedNvim</h3>
-                <p className="mb-4 text-center">Contributor to the neolsolarized.nvim theme</p>
-                <div className="text-center">
-                  <Link
-                    href="https://github.com/svrana/neosolarized.nvim"
-                    className="inline-block"
-                    target="_blank"
-                  >
-                    <Button>
-                      VIEW PROJECT
-                    </Button>
-                  </Link>
-                </div>
-              </div>
-
-              <div className="border-2 border-black p-6">
-                <div className="h-48 bg-gray-200 flex items-center justify-center mb-4">
-                Image
-                </div>
-                <h3 className="text-2xl font-bold mb-2 text-center break-words">NeosolarizedNvim</h3>
-                <p className="mb-4 text-center">Contributor to the neolsolarized.nvim theme</p>
-                <div className="text-center">
-                  <Link
-                    href="https://github.com/svrana/neosolarized.nvim"
-                    className="inline-block"
-                  >
-                    <Button>
-                      VIEW PROJECT
-                    </Button>
-                  </Link>
-                </div>
-              </div>
-
-              <div className="border-2 border-black p-6">
-                <div className="h-48 bg-gray-200 flex items-center justify-center mb-4">
-                Image
-                </div>
-                <h3 className="text-2xl font-bold mb-2 text-center break-words">NeosolarizedNvim</h3>
-                <p className="mb-4 text-center">Contributor to the neolsolarized.nvim theme</p>
-                <div className="text-center">
-                  <Link
-                    href="https://github.com/svrana/neosolarized.nvim"
-                    className="inline-block"
-                  >
-                    <Button>
-                      VIEW PROJECT
-                    </Button>
-                  </Link>
-                </div>
-              </div>
-
-          </div>
+          <h2 className="text-4xl font-bold mb-8 text-left">NOTABLE PROJECTS</h2>
+              <ListComponent />
         </section>
+
+        {/* Experience Section ? */}
 
         {/* Contact Section */}
         <section id="contact" className="container mx-auto px-4 py-20 border-b-4 border-black">
