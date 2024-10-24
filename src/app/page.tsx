@@ -10,60 +10,34 @@ import { useEffect, useState } from "react";
 interface ListItem {
   title: string
   description: string
-  slug: string
-}
-
-function WarningModal({ isOpen, onClose }) {
-  if (!isOpen) return null;
-
-  return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-yellow-400 border-4 border-black p-8 max-w-md w-full relative">
-        <button
-          onClick={onClose}
-          className="absolute top-2 right-2 text-black hover:text-gray-700"
-          aria-label="Close"
-        >
-          <X size={24} />
-        </button>
-        <h2 className="text-2xl font-bold text-black mb-4">WARNING</h2>
-        <p className="text-black mb-6">This website is in preview stage. Some features may not be fully functional.</p>
-        <button
-          onClick={onClose}
-          className="bg-black text-white px-4 py-2 font-bold hover:bg-gray-800 transition-colors"
-        >
-          Understood
-        </button>
-      </div>
-    </div>
-  );
+  link: string
 }
 
 const sampleItems: ListItem[] = [
   {
-    title: "Example Product",
-    description: `Example description to be fetched from the backend.`,
-    slug: "brutalist-chair",
+    title: "Neosolarized.nvim",
+    description: `Contributer to the famous Neovim theme.`,
+    link: "https://github.com/svrana/neosolarized.nvim",
   },
   {
-    title: "Example Product",
-    description: `Example description to be fetched from the backend.`,
-    slug: "concrete-coffee-table",
+    title: "Nextjs Movie search",
+    description: `An elegant , efficient app for searching movies and their details.`,
+    link: "https://github.com/donRehan/movieSearch",
   },
   {
-    title: "Example Product",
-    description: `Example description to be fetched from the backend.`,
-    slug: "minimalist-lamp",
+    title: "Angular todo app",
+    description: `A minimalist todo app with beautiful UI.`,
+    link: "https://github.com/donRehan/simple_todo_app",
   },
   {
-    title: "Example Product",
-    description: `Example description to be fetched from the backend.`,
-    slug: "raw-steel-bookshelf",
+    title: "Git simple clone",
+    description: `A clone of git simplified , written in c++.`,
+    link: "https://github.com/donRehan/git_clone",
   },
   {
-    title: "Example Product",
-    description: `Example description to be fetched from the backend.`,
-    slug: "exposed-brick-wallpaper",
+    title: "React Native Mobile todo app",
+    description: `A beautiful looking minimal todo app for mobile phones.`,
+    link: "https://github.com/donRehan/todo_app",
   },
 ]
 
@@ -74,7 +48,7 @@ function ListComponent() {
         {sampleItems.map((item, index) => (
           <div className="group">
           <li key={index} className="border-b border-black pb-4 group-hover:border-b-4">
-            <Link href={`/product/${item.slug}`} className="block pb-2  border-black transition-all">
+            <Link href={`${item.link}`} className="block pb-2  border-black transition-all">
                 <h2 className="text-2xl font-bold mb-2">{item.title}</h2>
                 <p className="text-sm mb-4 text-wrap">{item.description}</p>
                 <span className="text-sm underline md:text-right group-hover:font-bold transition-all">
@@ -90,15 +64,9 @@ function ListComponent() {
 }
 
 export default function Component() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  useEffect(() => {
-    setIsModalOpen(true);
-  }, []);
 
   return (
     <div className={`${ibm.className} antialiased min-h-screen bg-[#f5f5f5] text-black font-mono`}>
-      <WarningModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
 
       <div className="bg-[#f5f5f5] mx-auto max-w-5xl">
         {/* Header Section */}
