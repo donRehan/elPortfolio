@@ -15,11 +15,6 @@ interface ListItem {
 
 const sampleItems: ListItem[] = [
   {
-    title: "Neosolarized.nvim",
-    description: `Contributer to the famous Neovim theme.`,
-    link: "https://github.com/svrana/neosolarized.nvim",
-  },
-  {
     title: "Nextjs Movie search",
     description: `An elegant , efficient app for searching movies and their details.`,
     link: "https://github.com/donRehan/movieSearch",
@@ -30,14 +25,19 @@ const sampleItems: ListItem[] = [
     link: "https://github.com/donRehan/simple_todo_app",
   },
   {
-    title: "Git simple clone",
-    description: `A clone of git simplified , written in c++.`,
-    link: "https://github.com/donRehan/git_clone",
+    title: "Simple post management system",
+    description: `A simple , minimal post management system.`,
+    link: "https://github.com/donRehan/simple_post_management_system",
   },
   {
-    title: "React Native Mobile todo app",
-    description: `A beautiful looking minimal todo app for mobile phones.`,
-    link: "https://github.com/donRehan/todo_app",
+    title: "Etch-a-sketch",
+    description: `A simple etch-a-sketch app, Written in vanilla JS.`,
+    link: "https://donrehan.github.io/etch-a-sketch/",
+  },
+  {
+    title: "Rock Paper Scissors",
+    description: `A simple rock paper scissors game, written in vanilla JS.`,
+    link: "https://donrehan.github.io/rock-paper-scissors/",
   },
 ]
 
