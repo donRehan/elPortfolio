@@ -13,9 +13,20 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
+const title =  "Portfolio | Alhussien Rehan";
+const description  = "crafting digital experiences";
+
 export const metadata: Metadata = {
-  title: "Portfolio | Alhussien Rehan",
-  description: "crafting digital experiences",
+  title: title,
+  description: description,
+  openGraph: {
+  title,
+  description,
+  },
+  twitter: {
+  title,
+  description,
+  }
 };
 
 export default function RootLayout({
